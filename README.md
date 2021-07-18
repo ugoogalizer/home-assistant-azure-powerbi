@@ -1,7 +1,20 @@
 # home-assistant-azure-powerbi
 Push from Home Assistant to PowerBI via Azure Event Hubs for Visualisation
 
+## Strategy:
+1. HomeAssistant is an excellent home IoT and smart device integration and automation platform, but it is not a very good analysis or visualisation tool.  The aim of this exercise was to find a way to get better analysis and visualisations (dashboards in particular) using Azure's tech stack.  
+2. Stay within budget: $150 / month within an (MSDN subscription's Azure budget)[https://azure.microsoft.com/en-us/pricing/member-offers/credit-for-visual-studio-subscribers/].  There are probably ways to reduce cost, but Azure EventHubs does appear to have a flat licencing cost onsimply having it running.
+		
+3. Keep It Simple
+4. Aim to establish everything with code as much as possible: 
+    1. So it's repeatable
+    1. So I can quickly turn off/on services given this is ultimately only a learning sandbox
+(Will focus on Azure CLI for now, rather than the more repeatable but less approachable for azure beginners: ARM Templates
 
+
+## Planned Dataflow
+
+Home Assistant > Azure EventHubs > Azure Stream Analytics > PowerBI
 
 
 
@@ -57,6 +70,11 @@ Take note of the connection string and the eventHubName as you're going to need 
 
 ## Receive Data from Home Assistant
 
+Setup Stream Analytics to process the data in the event hub.
+
+### Create a Stream Analytics Job
+
+### Add Input to Stream Analytics Job
 
 
 
@@ -101,12 +119,15 @@ Restart Home Assistant to make change take effect.
 
 TBC
 
-# Housekeepting
+# Housekeeping
 Azure will cost money if you keep it online and don't use it, to minimise cost impact, consider:
-## Turn off Everything
+## Turn off Everything in Azure
 
-## Delete Everything
+## Delete Everything in Azure
 
+``` bash
+az group delete --name  $resourceGroupx
+```
 # References
 
 Azure and PowerBI work: 
